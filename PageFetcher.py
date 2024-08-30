@@ -16,3 +16,10 @@ class PageFetcher:
         response = requests.get(search_url, headers=self.headers, verify=False)
         response.raise_for_status()  # エラーチェック
         return response.text
+    
+    def fetch_multiple_pages(self, page_numbers):
+        # 複数のページ番号の検索結果を同時に取得する
+        results = {}
+        for page_number in page_numbers:
+            results[page_number] = self.fetch_page(page_number)
+        return results
