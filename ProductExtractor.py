@@ -13,19 +13,23 @@ class ProductExtractor:
         # BeautifulSoupを使用してHTMLコンテンツを解析する
         soup = BeautifulSoup(html_content, 'html.parser')
 
-        # クラス 'bcs_itemBox' 内の 'bcs_title' を持つすべての製品名を抽出する
-        product_names = soup.select('div.bcs_itemBox p.bcs_title a.bcs_item')
-        # クラス 'bcs_price' を持つすべての価格を抽出する
-        prices = soup.select('p.bcs_price')
-        # クラス 'bcs_point' を持つすべてのポイントを抽出する
-        points = soup.select('p.bcs_point')
+        # <li data-item="data-item"> タグをすべて抽出する
+        items = soup.select('li[data-item="data-item"]')
 
-        # 製品名、価格、ポイントをリストに格納する
-        for name, price, point in zip(product_names, prices, points):
+        # 各アイテムから商品名、価格、ポイントを抽出する
+        for item in items:
+            name_tag = item.select_one('p.bcs_title a.bcs_item')
+            price_tag = item.select_one('p.bcs_price')
+            point_tag = item.select_one('p.bcs_point')
+
+            name = name_tag.get_text(strip=True) if name_tag else 'NA'
+            price = price_tag.get_text(strip=True) if price_tag else 'NA'
+            point = point_tag.get_text(strip=True) if point_tag else 'NA'
+
             product_info = {
-                'name': name.get_text(strip=True),
-                'price': price.get_text(strip=True),
-                'point': point.get_text(strip=True)
+                'name': name,
+                'price': price,
+                'point': point
             }
             products.append(product_info)
 
