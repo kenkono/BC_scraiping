@@ -1,6 +1,4 @@
 from bs4 import BeautifulSoup
-from PageFetcher import PageFetcher
-from CSVWriter import CSVWriter
 
 class ProductExtractor:
     def __init__(self):

@@ -1,23 +1,33 @@
-# PageFetcher クラス
+# クラス図
 
-## 概要
-`PageFetcher` クラスは、指定されたページ番号の検索結果を取得するためのクラスです。
+```mermaid
+classDiagram
+    class Constants {
+        +string BASE_URL
+        +string ENCODED_QUERY
+    }
 
-## メソッド
+    class ProductExtractor {
+        +list extract_products(string html_content)
+        +string extract_name(BeautifulSoup item)
+        +string extract_price(BeautifulSoup item)
+        +string extract_point(BeautifulSoup item)
+    }
 
-### `__init__()`
-- コンストラクタ。基本URLとヘッダーを設定します。
+    class PageFetcher {
+        +string fetch_page(int page_number)
+        +list fetch_pages(int start_page, int end_page)
+    }
 
-### `fetch_page(page_number)`
-- 指定したページ番号の検索結果を取得します。
-- **引数**
-  - `page_number` (int): 取得するページの番号。
-- **戻り値**
-  - `str`: ページのHTMLコンテンツ。
+    class CSVWriter {
+        +void write_to_csv(list products, string filename)
+    }
 
-### `fetch_multiple_pages(page_numbers)`
-- 複数のページ番号の検索結果を同時に取得します。
-- **引数**
-  - `page_numbers` (list of int): 取得するページ番号のリスト。
-- **戻り値**
-  - `dict`: 各ページ番号をキーとし、そのページのHTMLコンテンツを値とする辞書。
+    class Main {
+        +void main()
+    }
+
+    PageFetcher --> Constants : uses
+    Main --> ProductExtractor : uses
+    Main --> PageFetcher : uses
+    Main --> CSVWriter : uses
