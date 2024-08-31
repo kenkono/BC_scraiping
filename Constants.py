@@ -1,6 +1,10 @@
 class Constants:
-    __BASE_URL = "https://www.biccamera.com/bc/main/"
-    __encoded_query = "冷蔵庫".encode("shift_jis")
+    query = "冷蔵庫"
+
+    __BASE_URL = "https://www.biccamera.com/bc/category/"
+    __encoded_query = query.encode("shift_jis")
+
+
 
     @property
     def BASE_URL(self):

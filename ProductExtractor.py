@@ -9,7 +9,6 @@ class ProductExtractor:
     def extract_products(self, html_content):
         # Parse the HTML content with BeautifulSoup
         soup = BeautifulSoup(html_content, 'html.parser')
-        print("HTML Content Sample:", soup.prettify()[:1000]) 
 
         # Extract all product names within the class 'bcs_item'
         product_names = soup.select('div.bcs_itemBox p.bcs_title a.bcs_item')
@@ -20,13 +19,10 @@ class ProductExtractor:
 # 使用例
 if __name__ == "__main__":
     fetcher = PageFetcher()
-    html_content = fetcher.fetch_page(2)
+    html_content = fetcher.fetch_page(1)
 
     # デバッグ出力: 取得したHTMLの長さを表示
     print("Fetched HTML Length:", len(html_content))
 
     extractor = ProductExtractor()
     products = extractor.extract_products(html_content)
-    
-    # for product in products:
-    #     print(f"Name: {product['name']}, Price: {product['price']}, Points: {product['points']}")
