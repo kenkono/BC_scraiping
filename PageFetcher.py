@@ -22,3 +22,11 @@ class PageFetcher:
         response.raise_for_status()  # エラーチェック
         response.encoding = 'shift_jis'  # 文字化け防止のためShiftJISに設定
         return response.text
+
+    def fetch_pages(self, start_page, end_page):
+        # 指定した範囲のページの検索結果を取得する
+        pages = []
+        for page_number in range(start_page, end_page + 1):
+            page_content = self.fetch_page(page_number)
+            pages.append(page_content)
+        return pages
