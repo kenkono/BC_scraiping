@@ -9,12 +9,14 @@ class PageFetcher:
         self.headers = {
             "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.3"
         }
+        self.encoded_query = self.constants.encoded_query
 
     def fetch_page(self, page_number):
         # 指定したページ番号の検索結果を取得する
-        search_url = f"{self.base_url}?q=冷蔵庫&page={page_number}"
+        search_url = f"{self.base_url}?q={self.encoded_query}&page={page_number}"
         response = requests.get(search_url, headers=self.headers, verify=False)
         response.raise_for_status()  # エラーチェック
+        response.encoding = 'shift_jis'  # 文字化け防止のためShiftJISに設定
         return response.text
     
     def fetch_multiple_pages(self, page_numbers):
