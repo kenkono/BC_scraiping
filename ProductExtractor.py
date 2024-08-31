@@ -32,16 +32,13 @@ class ProductExtractor:
         print(products)
         return products
 
-
-
-
 # 使用例
 if __name__ == "__main__":
     fetcher = PageFetcher()
     extractor = ProductExtractor()
 
     # 1ページ目と2ページ目のHTMLコンテンツを取得
-    pages_content = fetcher.fetch_pages(1, 3)
+    pages_content = fetcher.fetch_pages(1, 2)
 
     # 各ページの製品名を抽出して表示
     for content in pages_content:

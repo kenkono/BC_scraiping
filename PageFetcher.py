@@ -1,5 +1,5 @@
 import requests
-import os
+# import os #証明書関連
 from Constants import Constants
 import urllib.parse
 
