@@ -1,6 +1,8 @@
 # BC_scraiping
-# 動作手順
-## コマンドで以下を実施
+## 動作手順
+### Docker デスクトップのインストール
+https://www.docker.com/ja-jp/products/docker-desktop/
+### コマンドで以下を実施
 ```
 Dockerイメージのビルド:
 docker build -t biccamera_scraiping .
