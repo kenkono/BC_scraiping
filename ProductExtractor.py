@@ -3,6 +3,7 @@
 説明：商品名、価格、ポイントを抜き出すクラス
 """
 from bs4 import BeautifulSoup
+from typing import Optional
 
 class ProductExtractor:
     def __init__(self):
@@ -20,9 +21,9 @@ class ProductExtractor:
 
         # 各アイテムから商品名、価格、ポイントを抽出する
         for item in items:
-            name_tag = item.select_one('p.bcs_title a.bcs_item')
-            price_tag = item.select_one('p.bcs_price')
-            point_tag = item.select_one('p.bcs_point')
+            name_tag: Optional[str] = item.select_one('p.bcs_title a.bcs_item')
+            price_tag: Optional[str] = item.select_one('p.bcs_price')
+            point_tag: Optional[str] = item.select_one('p.bcs_point')
 
             # 商品名を抽出、タグが存在しない場合は 'NA' を設定
             name = name_tag.get_text(strip=True) if name_tag else 'NA'
