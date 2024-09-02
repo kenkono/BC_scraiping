@@ -1,3 +1,7 @@
+"""
+クラス名：main
+説明：メイン処理を行うクラス
+"""
 from PageFetcher import PageFetcher
 from ProductExtractor import ProductExtractor
 from CSVWriter import CSVWriter

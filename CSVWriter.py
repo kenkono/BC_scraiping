@@ -1,3 +1,7 @@
+"""
+クラス名：CSVWriter
+説明：CSV出力クラス。ファイル名の区別をつけるために日付とversion情報をファイル名につけるようにしています。
+"""
 import csv
 from datetime import datetime
 import os

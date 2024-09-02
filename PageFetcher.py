@@ -1,3 +1,7 @@
+"""
+クラス名：PageFetcher
+説明：ページを取得するクラス
+"""
 import requests
 # import os #証明書関連
 from Constants import Constants

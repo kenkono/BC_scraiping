@@ -1,3 +1,7 @@
+"""
+クラス名：ProductExtractor
+説明：商品名、価格、ポイントを抜き出すクラス
+"""
 from bs4 import BeautifulSoup
 
 class ProductExtractor:
@@ -20,8 +24,11 @@ class ProductExtractor:
             price_tag = item.select_one('p.bcs_price')
             point_tag = item.select_one('p.bcs_point')
 
+            # 商品名を抽出、タグが存在しない場合は 'NA' を設定
             name = name_tag.get_text(strip=True) if name_tag else 'NA'
+            # 価格を抽出、タグが存在しない場合は 'NA' を設定
             price = price_tag.get_text(strip=True) if price_tag else 'NA'
+            # ポイントを抽出、タグが存在しない場合は 'NA' を設定
             point = point_tag.get_text(strip=True) if point_tag else 'NA'
 
             product_info = {
