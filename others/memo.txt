@@ -1,0 +1,9 @@
+冷蔵庫はエンコードでShift JISで
+クエリはqとp
+https://www.biccamera.com/bc/category/?q=%97%E2%91%A0%8C%C9&p=2
+大量のHTMLはファイルで添付
+明示的に文字コードは合わせる、shit JISで　headタグのcharsetを合わせる
+クラス図はmermaidで作成
+ビックカメラから証明書を取得して、vertifyでファイルを指定すればいい気がする
+HTML要素は右クリックの検証
+SSL証明書を確認するためにpythonのcertifiを使う
